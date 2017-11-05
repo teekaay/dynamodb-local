@@ -5,6 +5,7 @@ services:
     build:
       context: ./dynamodb
       dockerfile: Dockerfile
+    container_name: dynamodb
     network_mode: host
     ports:
       - "8030:8030"
@@ -18,8 +19,9 @@ services:
     build:
       context: ./dynamodb-admin
       dockerfile: Dockerfile
+    container_name: dynamodb-admin
     network_mode: host
     ports:
       - "8001:8001"
     environment:
-      DYNAMODB_ENDPOINT: "http://localhost:8030"
+      DYNAMODB_ENDPOINT: "http://dynamodb:8030"
