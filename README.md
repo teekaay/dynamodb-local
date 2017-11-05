@@ -13,12 +13,12 @@ DynamoDB.
 To get started, install `docker` and `docker-compose` first. Afterwards,
 run
 
-  docker-compose build
+    docker-compose build
 
 to build both the DynamoDB container and the container for the GUI client.
 If the build succeeds, run
 
-  docker-compose up
+    docker-compose up
 
 to start the DynamoDB server on `http://localhost:8030` and the admin on
 `http://localhost:8001`.
