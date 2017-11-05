@@ -1,0 +1,25 @@
+---
+version: '2'
+services:
+  dynamodb:
+    build:
+      context: ./dynamodb
+      dockerfile: Dockerfile
+    network_mode: host
+    ports:
+      - "8030:8030"
+      - "8080:8080"
+    volumes:
+      - "./data:/var/opt/dynamodb/data"
+    environment:
+      DYNAMO_DB_PORT: 8030
+      DYNAMO_DB_HOME: '/var/opt/dynamodb'
+  dynamodb-admin:
+    build:
+      context: ./dynamodb-admin
+      dockerfile: Dockerfile
+    network_mode: host
+    ports:
+      - "8001:8001"
+    environment:
+      DYNAMODB_ENDPOINT: "http://localhost:8030"
